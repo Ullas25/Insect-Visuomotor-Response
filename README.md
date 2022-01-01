@@ -1,4 +1,4 @@
-# Virtual arena to investigate Bee Visuomotor response
+# Virtual Arena to Investigate Bee Visuomotor Response
 
 **This work is carried out under the guidance of Dr. Joby Joseph in the [Neuronal Systems Lab](https://sites.google.com/site/nsyslabcncs/research), Center for Neural and Cognitive Sciences, University of Hyderabad, India.**
 
@@ -68,3 +68,23 @@ The value of the mouse value read is used to set the direction circular shift of
 2.	We then compare each element of a given pattern in the form of an array. If it's “1” the LED that particular LED is lighted. On the other hand, if it's “0” the LED is not switched on.
 
 3.	The next position of the last LED of the last column is the first LED of the first column
+
+## Results
+
+When the mouse moves the LED bar should also move in the direction of sensor movement. By calculating the delay in LED movement with respect to mouse movement we get the response time of the system. The dealy is found by calculating the cross-correlation between the two sets of pixels of interest (Pixels of LED lighting and pixels of the mouse). The result of the cross-correlation is given below. 
+
+![image](https://user-images.githubusercontent.com/46472021/147846373-2cbd3046-fcbe-440b-9eae-eb3c87a4a0f0.png)
+
+In the above figure, the first plot is of LED bar pixels over different frames, the second plot is of mouse wire pixels over frames and the final plot is of the velocity of the LED bar and mouse wire. Here we can see the difference in the velocity. Cross-correlation between filtered LED pixels and mouse wire pixels is found. ***The delay was 1 frame and the video FPS was 20. So the response time of the system is 50ms.***
+
+
+To check how the system might perform when used for the actual Bee Visuomotor experiment we collected fast mouse senor movement data for about 3 minutes. The time it took to light up the LED bar from one mouse sensor value to the other is calculated and stored along with the sensor value. Our goal here is to find the response time of the system. We find the response time by analysing the data that we stored in the file. The response time is also calculated by video analysis. This validates the response time value.
+We performed fast mouse sensor movement for various time duration and calculated the mean response time. Initially, the mouse sensor value and timestamp were stored in a .txt file. Later the values were copied into an excel workbook (.xlsx) and used for data analysis. The values were sored with a column named “Values”. The mouse sensor value is stored first and in the next row, its timestamp is stored.
+
+![image](https://user-images.githubusercontent.com/46472021/147846405-ed7c4369-b6f7-4649-aa28-c06ee840abb0.png)
+
+Above is the code of Data Analysis
+
+![image](https://user-images.githubusercontent.com/46472021/147846443-2b505456-f1ac-4c83-bda0-9ee52b77fce8.png)
+
+The result of the analysis of four trials is given below. The minimum response time of the four trials is 33.2508, 37.9924, 31.5463 and 33.9717 milliseconds respectively. No. of values read is the number of mouse sensor values read.
