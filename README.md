@@ -14,6 +14,8 @@ The experiment setup is as follows: Logitech wired mouse is used as an optical s
 
 ### Closed-loop system
 
+***Closed_Loop.py: The code for closed loop system***
+
 In a closed-loop system, the LED bar is moved in relation to mouse sensor movement. The mouse sensor value should be collected and timestamped for analysis in a file. The program should randomly move the LED bar for a given number of times after a certain time interval.
 1. Firstly, we need to import all the libraries that are needed for the closed-loop experiment. Installation of the libraries is discussed in Appendix B. We import luma.led_matrix library which allows us to interface MAX7219 driver with Raspberry pi. It provides the ability to draw patterns on a LED matrix.
     
@@ -53,11 +55,15 @@ As the LEDs in the matrix are in the form of coordinates. We can control the LED
 
 ### Open Loop
 
+***Open_Loop.py: Code for open loop system***
+
 In the open-loop system, the LED movement is independent of mouse sensor value. LED is moved randomly and the mouse sensor response is stored with its timestamp. The code for open-loop is similar to Closed Loop. The only difference is mouse sensor reading code and LED movement code is independent.
 
 We need to randomly choose which columns of the LED matrix has to be lighted randomly. This is achieved by j = random.randint(0, 7). We also need to choose the time at which the bar of light has to be lighted. This is achieved by if (iteration_passed % delay_iteration) == 0. iteration_passed is incremented with each iteration and delay_iteration is initialized in the beginning. Whenever the iteration_time is a multiple of delay_iteration, the loop is executed, lighting the LED.
 
 ### Any pattern movement
+
+***Circular_Shift.py: Code for any pattern movement***
 
 When the experiment contains 7 other LED matrices, we need to have the ability to control each one of them. If we can control a given pattern in one matrix, we would have the ability to control all 8 LED matrices. 
 This control is achieved by circular shifting the pattern of a matrix in a clockwise or anticlockwise direction. The libraries imported are similar to that of the open-loop or closed-loop experiment. The required pattern is in the form of an array (64 length). This 64 is the number of LEDs in a given matrix.
